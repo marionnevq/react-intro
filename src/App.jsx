@@ -17,6 +17,18 @@ export default class App extends Component {
         id: 3,
         value: 7,
       },
+      {
+        id: 4,
+        value: 7,
+      },
+      {
+        id: 5,
+        value: 7,
+      },
+      {
+        id: 6,
+        value: 7,
+      },
     ],
   };
 
@@ -77,14 +89,16 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <NavBar totalCount={this.getCountersWithValue()} />
-        <div className="container">
+        <NavBar
+          totalCount={this.getCountersWithValue()}
+          onReset={this.handleReset}
+        />
+        <div className="container-fluid">
           <Counters
             counters={this.state.counters}
             onDelete={this.handleDelete}
             onIncrement={this.handleIncrement}
             onDecrement={this.handleDecrement}
-            onReset={this.handleReset}
           />
         </div>
       </div>
