@@ -5,13 +5,6 @@ export default class Counter extends Component {
     return <h1>Big Name</h1>;
   }
 
-  getClassName() {
-    if (this.props.counter.value > 0) {
-      return "badge bg-primary mx-1";
-    }
-    return "badge bg-warning text-dark mx-1";
-  }
-
   formatText() {
     if (this.props.counter.value > 0) {
       return this.props.counter.value;
@@ -33,26 +26,33 @@ export default class Counter extends Component {
     if (counter.value > 0) {
       button = (
         <>
-          <button
+          {/* <button
             onClick={() => this.props.onDelete(counter.id)}
             className="btn btn-danger mx-1"
           >
             Delete
-          </button>
-          <button
-            onClick={() => this.props.onDecrement(counter.id)}
-            className="btn btn-secondary mx-1"
-            disabled={counter.value === 0}
-          >
-            -
-          </button>
-          <span className={this.getClassName()}>{this.formatText()}</span>
-          <button
-            onClick={() => this.props.onIncrement(counter.id)}
-            className="btn btn-primary mx-1"
-          >
-            +
-          </button>
+          </button> */}
+          <div className="btn-group" role="group">
+            <button
+              onClick={() => this.props.onDecrement(counter.id)}
+              className="btn btn-secondary "
+              disabled={counter.value === 0}
+            >
+              -
+            </button>
+            <span
+              className="btn btn-outline-secondary"
+              style={{ pointerEvents: "none" }}
+            >
+              {this.formatText()}
+            </span>
+            <button
+              onClick={() => this.props.onIncrement(counter.id)}
+              className="btn btn-secondary"
+            >
+              +
+            </button>
+          </div>
         </>
       );
     } else {
@@ -60,7 +60,7 @@ export default class Counter extends Component {
         <>
           <button
             onClick={() => this.props.onIncrement(counter.id)}
-            className="btn btn-primary mx-1"
+            className="btn btn-primary mr-1"
           >
             Add To Cart
           </button>
@@ -70,16 +70,16 @@ export default class Counter extends Component {
 
     return (
       <>
-        <div className="card mb-4">
+        <div className="card mb-3">
           <img
             className="card-img-top"
             src="https://picsum.photos/200"
             alt="Card image cap"
           />
           <div className="card-body">
-            <h5 className="card-title">PS5 Disk Version</h5>
-            <p className="card-text">Php 27000.00 </p>
-            <p className="card-text">in stock: 25</p>
+            <h5 className="card-title">{counter.name}</h5>
+            <p className="card-text">Php {counter.price}</p>
+            <p className="card-text">in stock: {counter.stock}</p>
             {button}
           </div>
         </div>

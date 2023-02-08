@@ -1,35 +1,10 @@
 import React, { Component } from "react";
 import Counters from "./components/Counters";
 import NavBar from "./components/NavBar";
-
+import { products } from "./data/Products";
 export default class App extends Component {
   state = {
-    counters: [
-      {
-        id: 1,
-        value: 3,
-      },
-      {
-        id: 2,
-        value: 5,
-      },
-      {
-        id: 3,
-        value: 7,
-      },
-      {
-        id: 4,
-        value: 7,
-      },
-      {
-        id: 5,
-        value: 7,
-      },
-      {
-        id: 6,
-        value: 7,
-      },
-    ],
+    counters: products,
   };
 
   handleDelete = (id) => {
@@ -52,10 +27,11 @@ export default class App extends Component {
   handleIncrement = (id) => {
     this.setState({
       counters: this.state.counters.map((counter) => {
-        if (counter.id === id) {
+        if (counter.id === id && counter.stock > 0) {
           return {
             ...counter,
             value: counter.value + 1,
+            stock: counter.stock - 1,
           };
         }
         return counter;
@@ -66,10 +42,11 @@ export default class App extends Component {
   handleDecrement = (id) => {
     this.setState({
       counters: this.state.counters.map((counter) => {
-        if (counter.id === id) {
+        if (counter.id === id && counter.value > 0) {
           return {
             ...counter,
             value: counter.value - 1,
+            stock: counter.stock + 1,
           };
         }
         return counter;
