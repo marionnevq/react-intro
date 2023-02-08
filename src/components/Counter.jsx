@@ -77,8 +77,10 @@ export default class Counter extends Component {
             alt="Card image cap"
           />
           <div className="card-body">
+            <p className="card-text">Item no: {counter.id}</p>
             <h5 className="card-title">{counter.name}</h5>
             <p className="card-text">Php {counter.price}</p>
+
             <p className="card-text">in stock: {counter.stock}</p>
             {button}
           </div>

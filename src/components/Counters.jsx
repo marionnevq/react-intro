@@ -11,9 +11,9 @@ export default class Counters extends Component {
             {counters.map((counter) => (
               <div className="col-xs-12 col-md-6 col-xl-3">
                 <Counter
+                  key={counter.id}
                   onDelete={onDelete}
                   counter={counter}
-                  key={counter.id}
                   onIncrement={onIncrement}
                   onDecrement={onDecrement}
                 />
