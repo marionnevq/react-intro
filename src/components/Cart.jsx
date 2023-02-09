@@ -49,7 +49,14 @@ export default class Cart extends Component {
                     <tr key={item.id}>
                       <td>{item.id}</td>
                       <td>
-                        <img src="https://picsum.photos/150" />
+                        <img
+                          style={{
+                            height: 150,
+                            width: 150,
+                            objectFit: "contain",
+                          }}
+                          src={prod.src}
+                        />
                       </td>
                       <td>{prod.name}</td>
                       <td>{prod.value}</td>

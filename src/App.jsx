@@ -85,7 +85,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="bg-light">
         <NavBar
           totalCount={this.getCountersWithValue()}
           onReset={this.handleReset}

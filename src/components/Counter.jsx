@@ -26,12 +26,6 @@ export default class Counter extends Component {
     if (counter.value > 0) {
       button = (
         <>
-          {/* <button
-            onClick={() => this.props.onDelete(counter.id)}
-            className="btn btn-danger mx-1"
-          >
-            Delete
-          </button> */}
           <div className="btn-group" role="group">
             <button
               onClick={() => this.props.onDecrement(counter.id)}
@@ -70,10 +64,19 @@ export default class Counter extends Component {
 
     return (
       <>
-        <div className="card mb-3">
+        <div
+          className="card mb-3 p-2"
+          style={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 4px" }}
+        >
           <img
-            className="card-img-top"
-            src="https://picsum.photos/200"
+            className="card-img-top img-fluid border"
+            style={{
+              objectFit: "contain",
+              objectPosition: "center",
+              width: "100%",
+              maxHeight: 200,
+            }}
+            src={counter.src}
             alt="Card image cap"
           />
           <div className="card-body">

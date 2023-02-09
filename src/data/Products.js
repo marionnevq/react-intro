@@ -2,6 +2,7 @@ export const products = [
   {
     id: 1000,
     name: "PlayStation 5 Disk Edition",
+    src: "https://cdn.shopify.com/s/files/1/0355/8296/7943/products/standard_10b54bf8-3c84-42a4-b34c-90728da48d77_500x.jpg?v=1655511270",
     price: 27000.0,
     stock: 25,
     value: 0,
@@ -9,6 +10,7 @@ export const products = [
   {
     id: 1001,
     name: "Dualsense Controller Black",
+    src: "https://cdn.shopify.com/s/files/1/0355/8296/7943/products/dualsense-controller-midnight-black-1_2_d11da9c9-526c-47ac-988c-6dcb8e12b51a_500x.jpg?v=1640327585",
     price: 3500.0,
     stock: 15,
     value: 0,
@@ -16,6 +18,7 @@ export const products = [
   {
     id: 1002,
     name: "Dualsense Controller White",
+    src: "https://cdn.shopify.com/s/files/1/0355/8296/7943/products/1_6_a3cc7ee2-7db2-4973-a9c9-a133311f0614_500x.jpg?v=1616578478",
     price: 3500.0,
     stock: 10,
     value: 0,
@@ -23,6 +26,7 @@ export const products = [
   {
     id: 1003,
     name: "Pulse 3D Wireless Headset",
+    src: "https://cdn.shopify.com/s/files/1/0355/8296/7943/products/PS5HEADSETW_500x.png?v=1611798488",
     price: 5395.0,
     stock: 8,
     value: 0,
@@ -30,6 +34,7 @@ export const products = [
   {
     id: 1004,
     name: "PS5 HD Camera",
+    src: "https://cdn.shopify.com/s/files/1/0355/8296/7943/products/1_4_05c1bc9f-20d4-40fa-b86f-e19495807735_500x.jpg?v=1615199198",
     price: 3250.0,
     stock: 13,
     value: 0,
@@ -37,6 +42,7 @@ export const products = [
   {
     id: 1005,
     name: "Nyko PS5 Charge Base",
+    src: "https://cdn.shopify.com/s/files/1/0355/8296/7943/products/69ef1c7b-88b8-4ad4-b029-e887df6a7f8e_500x.png?v=1615196929",
     price: 1100.0,
     stock: 7,
     value: 0,
@@ -44,6 +50,7 @@ export const products = [
   {
     id: 1006,
     name: "Skull & Co PS5 Thumbgrips",
+    src: "https://cdn.shopify.com/s/files/1/0355/8296/7943/products/black_500x.png?v=1617175093",
     price: 190.0,
     stock: 5,
     value: 0,
@@ -51,6 +58,7 @@ export const products = [
   {
     id: 1007,
     name: "Hori Fighting Stick Alpha",
+    src: "https://cdn.shopify.com/s/files/1/0355/8296/7943/products/61tk6yu6H4L._SX522_500x.jpg?v=1655955802",
     price: 8450.0,
     stock: 3,
     value: 0,
@@ -58,6 +66,7 @@ export const products = [
   {
     id: 1008,
     name: "Razer Barracuda X Wireless Headset Pink",
+    src: "https://cdn.shopify.com/s/files/1/0355/8296/7943/products/razer-barracuda-x-quartz-1_500x.jpg?v=1639099552",
     price: 5495.0,
     stock: 5,
     value: 0,
@@ -65,6 +74,7 @@ export const products = [
   {
     id: 1009,
     name: "PS5 Protective Shell Purple",
+    src: "https://cdn.shopify.com/s/files/1/0355/8296/7943/products/console-cover-ps5-galactic-purple-flat_500x.jpg?v=1655435703",
     price: 3090.0,
     stock: 3,
     value: 0,
