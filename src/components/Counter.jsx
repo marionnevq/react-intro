@@ -77,7 +77,7 @@ export default class Counter extends Component {
               maxHeight: 200,
             }}
             src={counter.src}
-            alt="Card image cap"
+            alt={counter.name}
           />
           <div className="card-body">
             <p className="card-text">Item no: {counter.id}</p>

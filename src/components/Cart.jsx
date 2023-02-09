@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Modal, NavItem, Table } from "react-bootstrap";
+import { Button, Modal, Table } from "react-bootstrap";
 
 export default class Cart extends Component {
   state = {
@@ -56,6 +56,7 @@ export default class Cart extends Component {
                             objectFit: "contain",
                           }}
                           src={prod.src}
+                          alt={prod.name}
                         />
                       </td>
                       <td>{prod.name}</td>
