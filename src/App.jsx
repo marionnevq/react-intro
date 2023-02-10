@@ -1,35 +1,32 @@
-import React, { Component } from "react";
-import Counters from "./components/Counters";
-import NavBar from "./components/NavBar";
+import React, { Component, useState } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { products } from "./data/Products";
-export default class App extends Component {
-  state = {
-    counters: products,
-    cart: [],
+import AddProductPage from "./pages/AddProductPage";
+import ProductsPage from "./pages/ProductsPage";
+function App() {
+  const [counters, setCounters] = useState(products);
+  const [cart, setCart] = useState([]);
+
+  const handleDelete = (id) => {
+    setCounters(counters.filter((counter) => counter.id !== id));
   };
 
-  handleDelete = (id) => {
-    this.setState({
-      counters: this.state.counters.filter((counter) => counter.id !== id),
-    });
-  };
-
-  handleReset = () => {
-    this.setState({
-      counters: this.state.counters.map((counter) => {
+  const handleReset = () => {
+    setCounters(
+      counters.map((counter) => {
         return {
           ...counter,
           value: 0,
         };
-      }),
-      cart: [],
-    });
+      })
+    );
+    setCart([]);
   };
 
-  handleIncrement = (id) => {
-    this.addCart(id);
-    this.setState({
-      counters: this.state.counters.map((counter) => {
+  const handleIncrement = (id) => {
+    handleAddCart(id);
+    setCounters(
+      counters.map((counter) => {
         if (counter.id === id && counter.stock > 0) {
           return {
             ...counter,
@@ -38,16 +35,16 @@ export default class App extends Component {
           };
         }
         return counter;
-      }),
-    });
+      })
+    );
   };
 
-  handleDecrement = (id) => {
-    this.setState({
-      counters: this.state.counters.map((counter) => {
+  const handleDecrement = (id) => {
+    setCounters(
+      counters.map((counter) => {
         if (counter.id === id && counter.value > 0) {
           if (counter.value === 1) {
-            this.removeCart(counter.id);
+            handleRemoveCart(counter.id);
           }
           return {
             ...counter,
@@ -56,51 +53,46 @@ export default class App extends Component {
           };
         }
         return counter;
-      }),
-    });
+      })
+    );
   };
 
-  addCart = (id) => {
-    if (this.state.cart.find((item) => item.id === id)) {
+  const handleAddCart = (id) => {
+    if (cart.find((item) => item.id === id)) {
     } else {
       let newCartItem = {
         id: id,
       };
 
-      this.setState({
-        cart: [...this.state.cart, newCartItem],
-      });
+      setCart([...cart, newCartItem]);
     }
   };
 
-  removeCart = (id) => {
-    this.setState({
-      cart: this.state.cart.filter((item) => item.id !== id),
-    });
+  const handleRemoveCart = (id) => {
+    setCart(cart.filter((item) => item.id !== id));
   };
 
-  getCountersWithValue = () => {
-    return this.state.counters.filter((counter) => counter.value > 0).length;
-  };
-
-  render() {
-    return (
-      <div className="bg-light">
-        <NavBar
-          totalCount={this.getCountersWithValue()}
-          onReset={this.handleReset}
-          counters={this.state.counters}
-          cart={this.state.cart}
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Navigate to="/products" />} />
+        <Route
+          path="/products"
+          element={
+            <ProductsPage
+              counters={counters}
+              cart={cart}
+              onReset={handleReset}
+              onDelete={handleDelete}
+              onIncrement={handleIncrement}
+              onDecrement={handleDecrement}
+            />
+          }
         />
-        <div className="container-fluid">
-          <Counters
-            counters={this.state.counters}
-            onDelete={this.handleDelete}
-            onIncrement={this.handleIncrement}
-            onDecrement={this.handleDecrement}
-          />
-        </div>
-      </div>
-    );
-  }
+        <Route path="/products/add" element={<AddProductPage />} />
+      </Routes>
+    </>
+  );
 }
+
+export default App;
