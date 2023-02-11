@@ -1,21 +1,22 @@
 import React, { Component, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { products } from "./data/Products";
+import { PRODUCT_DATA } from "./data/Products";
 import AddProductPage from "./pages/AddProductPage";
+import EditProductPage from "./pages/EditProductPage";
 import ProductsPage from "./pages/ProductsPage";
 function App() {
-  const [counters, setCounters] = useState(products);
+  const [products, setProducts] = useState(PRODUCT_DATA);
   const [cart, setCart] = useState([]);
 
   const handleDelete = (id) => {
-    setCounters(counters.filter((counter) => counter.id !== id));
+    setProducts(products.filter((product) => product.id !== id));
   };
 
   const handleReset = () => {
-    setCounters(
-      counters.map((counter) => {
+    setProducts(
+      products.map((product) => {
         return {
-          ...counter,
+          ...product,
           value: 0,
         };
       })
@@ -25,34 +26,34 @@ function App() {
 
   const handleIncrement = (id) => {
     handleAddCart(id);
-    setCounters(
-      counters.map((counter) => {
-        if (counter.id === id && counter.stock > 0) {
+    setProducts(
+      products.map((product) => {
+        if (product.id === id && product.stock > 0) {
           return {
-            ...counter,
-            value: counter.value + 1,
-            stock: counter.stock - 1,
+            ...product,
+            value: product.value + 1,
+            stock: product.stock - 1,
           };
         }
-        return counter;
+        return product;
       })
     );
   };
 
   const handleDecrement = (id) => {
-    setCounters(
-      counters.map((counter) => {
-        if (counter.id === id && counter.value > 0) {
-          if (counter.value === 1) {
-            handleRemoveCart(counter.id);
+    setProducts(
+      products.map((product) => {
+        if (product.id === id && product.value > 0) {
+          if (product.value === 1) {
+            handleRemoveCart(product.id);
           }
           return {
-            ...counter,
-            value: counter.value - 1,
-            stock: counter.stock + 1,
+            ...product,
+            value: product.value - 1,
+            stock: product.stock + 1,
           };
         }
-        return counter;
+        return product;
       })
     );
   };
@@ -72,6 +73,29 @@ function App() {
     setCart(cart.filter((item) => item.id !== id));
   };
 
+  const handleAddProduct = (product) => {
+    setProducts([
+      ...products,
+      { ...product, id: products.length * 999 + 1, value: 0 },
+    ]);
+  };
+
+  const handleEditProduct = (id, product) => {
+    setProducts(
+      products.map((prod) => {
+        if (prod.id === id) {
+          return {
+            ...product,
+            id,
+            value: prod.value,
+          };
+        }
+
+        return prod;
+      })
+    );
+  };
+
   return (
     <>
       <Routes>
@@ -80,7 +104,7 @@ function App() {
           path="/products"
           element={
             <ProductsPage
-              counters={counters}
+              products={products}
               cart={cart}
               onReset={handleReset}
               onDelete={handleDelete}
@@ -89,7 +113,19 @@ function App() {
             />
           }
         />
-        <Route path="/products/add" element={<AddProductPage />} />
+        <Route
+          path="/products/add"
+          element={<AddProductPage onAddProduct={handleAddProduct} />}
+        />
+        <Route
+          path="/products/:id/edit"
+          element={
+            <EditProductPage
+              products={products}
+              onEditProduct={handleEditProduct}
+            />
+          }
+        />
       </Routes>
     </>
   );

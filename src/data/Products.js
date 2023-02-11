@@ -1,4 +1,4 @@
-export const products = [
+export const PRODUCT_DATA = [
   {
     id: 1000,
     name: "PlayStation 5 Disk Edition",

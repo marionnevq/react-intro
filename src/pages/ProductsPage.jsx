@@ -1,29 +1,30 @@
 import React from "react";
-import Counters from "../components/Counters";
+
 import NavBar from "../components/NavBar";
+import Products from "../components/Products";
 
 const ProductsPage = ({
   onReset,
-  counters,
+  products,
   cart,
   onDecrement,
   onIncrement,
   onDelete,
 }) => {
-  const getCountersWithValue = () => {
-    return counters.filter((counter) => counter.value > 0).length;
+  const getproductsWithValue = () => {
+    return products.filter((product) => product.value > 0).length;
   };
   return (
     <div className="bg-light">
       <NavBar
-        totalCount={getCountersWithValue()}
+        totalCount={getproductsWithValue()}
         onReset={onReset}
-        counters={counters}
+        products={products}
         cart={cart}
       />
       <div className="container-fluid">
-        <Counters
-          counters={counters}
+        <Products
+          products={products}
           onDelete={onDelete}
           onIncrement={onIncrement}
           onDecrement={onDecrement}

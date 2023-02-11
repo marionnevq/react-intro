@@ -1,16 +1,16 @@
 import React from "react";
-import Counter from "./Counter";
-const Counters = ({ onIncrement, onDecrement, onDelete, counters }) => {
+import Product from "./Product";
+const Products = ({ onIncrement, onDecrement, onDelete, products }) => {
   return (
     <div>
       <div className="container">
         <div className="row">
-          {counters.map((counter) => (
+          {products.map((product) => (
             <div className="col-xs-12 col-md-6 col-xl-3">
-              <Counter
-                key={counter.id}
+              <Product
+                key={product.id}
                 onDelete={onDelete}
-                counter={counter}
+                product={product}
                 onIncrement={onIncrement}
                 onDecrement={onDecrement}
               />
@@ -22,4 +22,4 @@ const Counters = ({ onIncrement, onDecrement, onDelete, counters }) => {
   );
 };
 
-export default Counters;
+export default Products;
